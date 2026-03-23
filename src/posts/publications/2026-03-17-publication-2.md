@@ -1,4 +1,5 @@
 ---
+layout: layouts/publication.njk
 name: "Publication #2"
 date: 2026-03-17T20:33:00.000+02:00
 tag: Conference

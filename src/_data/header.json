@@ -14,6 +14,14 @@
       "label": "Research",
       "href": "#research",
       "type": "default"
+    },
+    {
+      "label": "Partners",
+      "href": "#partners"
+    },
+    {
+      "label": "Credibility",
+      "href": "#credibility"
     }
   ]
 }

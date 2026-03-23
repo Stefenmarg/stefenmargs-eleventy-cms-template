@@ -1,4 +1,5 @@
 ---
+layout: layouts/project.njk
 title: "Project #8"
 date: 2026-03-22T18:37:00.000+02:00
 tags: project

@@ -54,6 +54,14 @@ module.exports = function(eleventyConfig) {
 		return date.toLocaleString("en-uk");
 	});
 
+	eleventyConfig.addNunjucksGlobal("getDataLength", function(name) {
+		const data = this.ctx[name];
+		if (!data) return 0;
+		if (Array.isArray(data)) return data.length;
+		if (Array.isArray(data.items)) return data.items.length;
+		return 0;
+	});
+	
 	return {
         dir: {
             input: config["input"],

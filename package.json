@@ -1,5 +1,5 @@
 {
-  "name": "kkokkinos-static-website",
+  "name": "stefenmargs-eleventy-cms-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://codeberg.org/stefenmarg/eleventy-static-cms-template/"
+    "url": "https://codeberg.org/stefenmarg/stefenmargs-eleventy-cms-template/"
   },
   "keywords": [],
   "author": "",

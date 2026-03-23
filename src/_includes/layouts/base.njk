@@ -16,7 +16,7 @@
 	{% if seo.favicon_apple %}<link rel="apple-touch-icon" sizes="180x180" href="{{ seo.favicon_apple }}" />{% endif %}
 
 	<!-- Primary -->
-	<title>{{ title }} | {{ site.title }}</title>
+	<title>{{ title }} | {{ settings.title }}</title>
 	<meta name="description" content="{{ settings.description }}" />
 	<meta name="keywords" content="{{ settings.keywords }}" />
 	<meta name="author" content="{{ settings.author or [] | join(', ') }}" />

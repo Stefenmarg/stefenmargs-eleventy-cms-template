@@ -1,7 +1,7 @@
 backend:
   name: gitea
-  repo: stefenmarg/eleventy-static-cms-template
-  app_id: 06b24854-8c27-45bf-b5a3-d0cde9ae3d92
+  repo: stefenmarg/stefenmargs-eleventy-cms-template
+  app_id: a84147cd-dce1-4a2f-b698-d5f144f82433
   branch: main
   api_root: https://codeberg.org/api/v1
   base_url: https://codeberg.org

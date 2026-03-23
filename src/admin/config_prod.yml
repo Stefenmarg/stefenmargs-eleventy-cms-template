@@ -1,0 +1,178 @@
+backend:
+  name: gitea
+  repo: stefenmarg/eleventy-static-cms-template
+  app_id: 06b24854-8c27-45bf-b5a3-d0cde9ae3d92
+  branch: main
+  api_root: https://codeberg.org/api/v1
+  base_url: https://codeberg.org
+  auth_endpoint: https://codeberg.org/login/oauth/authorize
+  site_domain: https://eleventy-static-cms-template.vercel.app/
+
+media_folder: "src/media/assets"
+public_folder: "src/media"
+
+site_url: https://eleventy-static-cms-template.vercel.app/
+
+collections:
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Site settings"
+        name: "site_items"
+        file: "src/_data/settings.json"
+        fields:
+          - { label: "Site title", "name": "title", widget: "string", "default": "Your site title"}
+          - { label: "SEO Site description (Up to 155 characters)", "name": "desc", widget: "string", "default": "Your site's description"}
+          - { label: "SEO Keywords", name: "keywords", widget: "string", default: "" }
+          - label: "SEO Authors"
+            name: "author"
+            widget: "list"
+            field: { label: "Author", name: "authors", widget: "list", default: [] }
+          - { label: "Canonical URL", name: "canonical_url", widget: "string", default: "" }
+          - { label: "Header Image", name: "header_image", widget: "image", required: true }
+          - { label: "OG Image", name: "og_image", widget: "image", required: false }
+          - { label: "Favicon 16x16", name: "favicon_16", widget: "image", required: false }
+          - { label: "Favicon 32x32", name: "favicon_32", widget: "image", required: false }
+          - { label: "Favicon 48x48", name: "favicon_48", widget: "image", required: false }
+          - { label: "Favicon 96x96", name: "favicon_96", widget: "image", required: false }
+          - { label: "Favicon 192x192", name: "favicon_192", widget: "image", required: false }
+          - { label: "Favicon 512x512", name: "favicon_512", widget: "image", required: false }
+          - { label: "Apple touch icon (180x180)", name: "favicon_apple", widget: "image", required: false }
+
+      - label: "Site contact"
+        name: "contact_items"
+        file: "src/_data/contact.json"
+        fields:
+          - label: "Contact Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Contact Option", name: "name", widget: "string", default: "Contact name" }
+              - { label: "FA Icon Class", name: "fa_icon", widget: "string", default: "fa-solid fa-question" }
+              - { label: "Contact Value", name: "value", widget: "text", default: "Contact value" }
+
+      - label: "Site Navigation"
+        name: "navigation_items"
+        file: "src/_data/header.json"
+        fields:
+          - label: "Nav Links"
+            name: "items"
+            widget: "list"
+            fields:
+              - label: "Label"
+                name: "label"
+                widget: "string"
+                default: "Navigation Label"
+
+              - label: "URL"
+                name: "href"
+                widget: "string"
+                default: "https://example.com"
+
+  - name: "hero"
+    label: "Hero"
+    files:
+      - label: "Hero data"
+        name: "hero"
+        file: "src/_data/hero.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Our site" }
+          - {label: "Description", name: "desc", widget: "text", default: "A short description for the hero section"}
+          - {label: "Button label", name: "button_label", widget: "string", default: "Get started"}
+          - {label: "Button link", name: "button_link", widget: "string", default: "https://example.com"}
+          - {label: "Image link", name: "img", widget: "string", default: "https://placehold.co/256x256"}
+
+  - name: "mission"
+    label: "Mission"
+    files:
+      - label: "Mission data"
+        name: "mission"
+        file: "src/_data/mission.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "Our Mission" }
+          - { label: "Description", name: "desc", widget: "text", default: "A short description of your mission" }
+          - label: "Missions"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string", default: "Mission title" }
+              - { label: "Short Description", name: "desc", widget: "text", default: "A brief description" }
+
+  - name: "team"
+    label: "Team"
+    files:
+      - label: "Team Members"
+        name: "team"
+        file: "src/_data/team.json"
+        fields:
+          - { label: "Section Description", name: "desc", widget: "text", default: "Short description here." }
+
+          - label: "Team Members"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Username" }
+              - { label: "Avatar URL", name: "icon", widget: "string", default: "https://placehold.co/256x256" }
+              - { label: "Description", name: "desc", widget: "text", default: "Your description here" }
+
+  - name: "research"
+    label: "Research"
+    files:
+      - label: "Research Areas"
+        name: "research_areas"
+        file: "src/_data/research.json"
+        fields:
+          - label: "Research Areas"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Area name", name: "name", widget: "string", default: "Research area name" }
+              - { label: "Icon URL", name: "icon", widget: "string", default: "https://placehold.co/64x64" }
+              - { label: "Area Description", name: "desc", widget: "text", default: "Short description here." }
+  
+  - name: "projects"
+    label: "Projects"
+    folder: "src/posts/projects"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", default: "New project" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Internal Tags", name: "tags", widget: "list", default: ["project"] }
+      - { label: "Category", name: "tag", widget: "select", options: ["Design", "Dev", "Research", "Marketing", "Other"], default: "Dev" }
+      - { label: "Status", name: "status", widget: "select", options: ["In progress", "Completed"], default: "In progress" }
+      - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+      - { label: "Body", name: "body", widget: "markdown" }
+    
+  - name: "publications"
+    label: "Publications"
+    folder: "src/posts/publications"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string", default: "New publication" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Type", name: "tag", widget: "select", options: ["Journal", "Conference", "Preprint", "Report"], default: "Journal" }
+      - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+      - { label: "URL", name: "href", widget: "string", default: "https://" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: partners
+    label: Partners
+    files:
+      - name: partners
+        label: Partners list
+        file: src/_data/partners.json
+        fields:
+          - label: Categories
+            name: categories
+            widget: list
+            fields:
+              - { label: Category name, name: label, widget: string }
+              - label: Partners
+                name: items
+                widget: list
+                fields:
+                  - { label: Name, name: title, widget: string }
+                  - { label: URL, name: url, widget: string, required: false }
+                  - { label: Logo, name: logo, widget: image, required: false }

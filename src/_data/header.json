@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "href": "/",
+      "type": "default"
+    },
+    {
+      "label": "Mission",
+      "href": "#mission",
+      "type": "default"
+    },
+    {
+      "label": "Research",
+      "href": "#research",
+      "type": "default"
+    }
+  ]
+}

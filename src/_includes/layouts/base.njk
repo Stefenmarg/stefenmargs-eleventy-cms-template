@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Favicons -->
+	{% if seo.favicon_16 %}<link rel="icon" type="image/png" sizes="16x16" href="{{ seo.favicon_16 }}" />{% endif %}
+	{% if seo.favicon_32 %}<link rel="icon" type="image/png" sizes="32x32" href="{{ seo.favicon_32 }}" />{% endif %}
+	{% if seo.favicon_48 %}<link rel="icon" type="image/png" sizes="48x48" href="{{ seo.favicon_48 }}" />{% endif %}
+	{% if seo.favicon_96 %}<link rel="icon" type="image/png" sizes="96x96" href="{{ seo.favicon_96 }}" />{% endif %}
+	{% if seo.favicon_192 %}<link rel="icon" type="image/png" sizes="192x192" href="{{ seo.favicon_192 }}" />{% endif %}
+	{% if seo.favicon_512 %}<link rel="icon" type="image/png" sizes="512x512" href="{{ seo.favicon_512 }}" />{% endif %}
+	
+	<!-- Apple devices -->
+	{% if seo.favicon_apple %}<link rel="apple-touch-icon" sizes="180x180" href="{{ seo.favicon_apple }}" />{% endif %}
+
+	<!-- Primary -->
+	<title>{{ title }} | {{ site.title }}</title>
+	<meta name="description" content="{{ settings.description }}" />
+	<meta name="keywords" content="{{ settings.keywords }}" />
+	<meta name="author" content="{{ settings.author or [] | join(', ') }}" />
+	<link rel="canonical" href="{{ settings.canonical_url }}" />
+	<meta name="robots" content="index, follow" />
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{{ settings.title }}" />
+	<meta property="og:description" content="{{ settings.description }}" />
+	<meta property="og:url" content="{{ settings.canonical_url }}" />
+	<meta property="og:image" content="{{ settings.og_image }}" />
+
+	<link rel="stylesheet" href="/media/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+
+	<!-- 100% privacy-first analytics -->
+	<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+</head>
+<body class="ps-32 pe-32 bg-olive-100">
+	{% include "partials/header.njk" %}
+	
+	<main class="ps-16 pe-16">
+		{{ content | safe }}
+	</main>
+
+	{% include "partials/back-to-top.njk" %}
+
+	{% include "partials/footer.njk" %}
+
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer ></script>
+	<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js" defer ></script>
+	<script src="/media/js/script.js" defer></script>
+
+</body>
+</html>

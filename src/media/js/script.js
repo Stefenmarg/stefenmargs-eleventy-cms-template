@@ -3,12 +3,17 @@ const DOM = {
     header: {
         navbar: document.getElementById("navbar"),
         toggle: document.getElementById("menu-toggle"),
-        menu: document.getElementById("navbar-solid")
+        menu: document.getElementById("navbar-solid"),
+        dropdowns: document.querySelectorAll("[data-dropdown-toggle]"),
+        sections: document.querySelectorAll("section[id]"),
+        navLinks: document.querySelectorAll("nav a")
     },
     footer: {
         year: document.getElementById("year")
     },
-    toTopBttn: document.getElementById("to-top-button"),
+    buttons: {
+        toTop: document.getElementById("to-top-button"),
+    },
     credibility: {
         counters: document.querySelectorAll("[data-count]")
     }
@@ -26,18 +31,18 @@ DOM.header.toggle.addEventListener("click", () => {
 });
 
 // Handle the head to top button
-DOM.toTopBttn.addEventListener('click', () => {
+DOM.buttons.toTop.addEventListener('click', () => {
     document.documentElement.scrollIntoView({ behavior: 'smooth' });
 })
 
 // Handle the scroll to top button
 window.onscroll = () => {
     if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        DOM.toTopBttn.classList.remove("opacity-0", "pointer-events-none");
-        DOM.toTopBttn.classList.add("opacity-100");
+        DOM.buttons.toTop.classList.remove("opacity-0", "pointer-events-none");
+        DOM.buttons.toTop.classList.add("opacity-100");
     } else {
-        DOM.toTopBttn.classList.add("opacity-0", "pointer-events-none");
-        DOM.toTopBttn.classList.remove("opacity-100");
+        DOM.buttons.toTop.classList.add("opacity-0", "pointer-events-none");
+        DOM.buttons.toTop.classList.remove("opacity-100");
     }
 };
 
@@ -73,3 +78,49 @@ const countObserver = new IntersectionObserver((entries) => {
  
 DOM.credibility.counters.forEach(el => countObserver.observe(el));
  
+// Scroll Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      DOM.header.navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        const match = href === `/#${entry.target.id}` || href === `#${entry.target.id}`;
+        if (match) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+  });
+}, { 
+  threshold: 0.1,
+  rootMargin: "-30% 0px -60% 0px"
+});
+
+DOM.header.sections.forEach(s => observer.observe(s));
+
+//Dropdown handler
+DOM.header.dropdowns.forEach(button => {
+    button.addEventListener("click", () => {
+        const dropdown = button.nextElementSibling;
+        const isOpen = !dropdown.classList.contains("hidden");
+
+        // Close all other dropdowns first
+        DOM.header.dropdowns.forEach(btn => {
+            btn.nextElementSibling.classList.add("hidden");
+        });
+
+        // Toggle this one
+        dropdown.classList.toggle("hidden", isOpen);
+    });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener("click", (e) => {
+    if (!e.target.closest("[data-dropdown-toggle]")) {
+        DOM.header.dropdowns.forEach(btn => {
+            btn.nextElementSibling.classList.add("hidden");
+        });
+    }
+});

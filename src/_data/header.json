@@ -2,7 +2,7 @@
   "items": [
     {
       "label": "Home",
-      "href": "/",
+      "href": "/#hero",
       "type": "default"
     },
     {
@@ -22,6 +22,21 @@
     {
       "label": "Credibility",
       "href": "/#credibility"
+    },
+    {
+      "label": "Other",
+      "href": "https://example.com",
+      "has_dropdown": true,
+      "dropdown_items": [
+        {
+          "label": "All projects",
+          "href": "/projects"
+        },
+        {
+          "label": "All publications",
+          "href": "/publications"
+        }
+      ]
     }
   ]
 }

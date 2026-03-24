@@ -22,7 +22,7 @@ permalink: "projects/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNu
 	<div class="flex flex-wrap justify-center gap-5 max-w-4xl mx-auto pb-5">
 		{% for post in paginatedProjects %}
 			<!-- Individual entry -->
-			<a href="{{ post.url }}" target="_blank">
+			<a href="{{ post.url }}" target="_blank" rel="noopener noreferrer">
 
 				<div class="flex flex-col items-start space-y-2 w-64 min-h-64 bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-100">
 					<!-- Category Name -->
@@ -65,17 +65,17 @@ permalink: "projects/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNu
 <nav class="flex items-center justify-center gap-6 max-w-4xl mx-auto mt-8 pt-6 border-t border-gray-200">
 
 	{% if pagination.href.previous %}
-		<a href="{{ pagination.href.previous }}" class="text-sm text-gray-600 border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors">← Prev</a>
+		<a href="{{ pagination.href.previous }}" class="text-sm text-gray-600 border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors"><i class="fa-solid fa-angle-left"></i> Prev</a>
 	{% else %}
-		<span class="text-sm text-gray-300 border border-gray-200 rounded-lg px-4 py-2 cursor-not-allowed">← Prev</span>
+		<span class="text-sm text-gray-300 border border-gray-200 rounded-lg px-4 py-2 cursor-not-allowed"><i class="fa-solid fa-angle-left"></i> Prev</span>
 	{% endif %}
 
 	<span class="text-xs text-gray-400">{{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }}</span>
 
 	{% if pagination.href.next %}
-		<a href="{{ pagination.href.next }}" class="text-sm text-gray-600 border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors">Next →</a>
+		<a href="{{ pagination.href.next }}" class="text-sm text-gray-600 border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors">Next <i class="fa-solid fa-angle-right"></i></a>
 	{% else %}
-		<span class="text-sm text-gray-300 border border-gray-200 rounded-lg px-4 py-2 cursor-not-allowed">Next →</span>
+		<span class="text-sm text-gray-300 border border-gray-200 rounded-lg px-4 py-2 cursor-not-allowed">Next <i class="fa-solid fa-angle-right"></i></span>
 	{% endif %}
 
 </nav>

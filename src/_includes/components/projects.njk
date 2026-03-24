@@ -1,4 +1,4 @@
-<section class="relative px-10 py-12 overflow-hidden" id="projects">
+<section class="relative px-4 sm:px-10 py-12 overflow-hidden" id="projects">
 	<!-- Subtle top divider -->
     <div class="max-w-4xl mx-auto mb-12">
         <div class="h-px bg-gray-200 w-full"></div>
@@ -13,7 +13,7 @@
 	<div class="flex flex-wrap justify-center gap-5 max-w-4xl mx-auto pb-5">
 		{% for post in collections.project | limit(5) %}
 			<!-- Individual entry -->
-			<a href="{{ post.url }}" target="_blank">
+			<a href="{{ post.url }}" target="_blank" rel="noopener noreferrer">
 
 				<div class="flex flex-col items-start space-y-2 w-64 min-h-64 bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-100">		
 					<!-- Category Name -->	
